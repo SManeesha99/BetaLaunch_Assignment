@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { ViewEmployee } from "./components/ViewEmployee";
-import { AddEmployee } from "./components/AddEmployee";
-import { UpdateEmployee } from "./components/UpdateEmployee";
+import  ViewEmployee from "./components/ViewEmployee";
+import  AddEmployee from "./components/AddEmployee";
+import  UpdateEmployee from "./components/UpdateEmployee";
 
 
 function App() {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Select from "react-select";
 
-export const AddEmployee = () => {
+const AddEmployee = () => {
   return (
     <>
     <div style={{ display:'grid' }}>
@@ -105,3 +105,5 @@ export const AddEmployee = () => {
     </>
   )
 }
+
+export default AddEmployee

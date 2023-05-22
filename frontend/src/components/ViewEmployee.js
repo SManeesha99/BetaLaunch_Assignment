@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const ViewEmployee = () => {
+const ViewEmployee = () => {
   return (
     <>
         <div>
@@ -65,3 +65,4 @@ export const ViewEmployee = () => {
     </>
   )
 }
+export default ViewEmployee
