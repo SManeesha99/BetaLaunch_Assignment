@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const ViewEmployee = () => {
   return (
@@ -9,7 +10,9 @@ export const ViewEmployee = () => {
         <hr></hr>
 
         <div className='mx-5 mt-5'>
-            <button type="button" className="btn btn-primary" style={{ float:'right', marginLeft:'10px' }}>Add People</button>
+            <Link to='/addemployee'>
+            <button type="button" className="btn btn-primary"  style={{ float:'right', marginLeft:'10px' }}>Add People</button>
+            </Link>
          </div>   
 
         <div className='mx-5 mt-5'>
@@ -28,25 +31,28 @@ export const ViewEmployee = () => {
          
 
         <div className='mx-5 mt-5'>
-        <table className="table table-bordered">
+        <table className="table">
             <thead className='table-light'>
                 <tr>
-                <th scope="col">Dispply Name</th>
-                <th scope="col">Emp Id</th>
-                <th scope="col">Designation</th>
-                <th scope="col">Emp Type</th>
-                <th scope="col">Experience</th>
-                <th scope="col"></th>
+                <th scope="col" style={{ padding:'3px' }}>Dispply Name</th>
+                <th scope="col" style={{ padding:'3px' }}>Emp Id</th>
+                <th scope="col" style={{ padding:'3px' }}>Designation</th>
+                <th scope="col" style={{ padding:'3px' }}>Emp Type</th>
+                <th scope="col" style={{ padding:'3px' }}>Experience</th>
+                <th scope="col" style={{ padding:'3px' }}></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td >1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td>Maneesha Fernando</td>
+                <td>001</td>
+                <td>Ux Designer</td>
+                <td>Part Time</td>
+                <td>4 Years</td>
+                <td>
+                    <button type="button" className="btn"  style={{ float:'right', marginLeft:'10px', color:'red' }}>Delete</button>
+                    <button type="button" className="btn"  style={{ float:'right', marginLeft:'10px', color:'blue' }}>Edit</button>
+                </td>
                 </tr>
             </tbody>
             {/* <tfoot className='table-light'>
