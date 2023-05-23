@@ -2,9 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const employeeSchema = new Schema({
-    employeID: { 
-        type: String 
-    },
+    
     fullName: { 
             type: String, 
             required: true 
@@ -56,6 +54,9 @@ const employeeSchema = new Schema({
     notes: { 
             type: String, 
             required: true 
+        },
+    employeID: { 
+            type: String 
         },
 });
 

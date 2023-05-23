@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const countSchema = new mongoose.Schema({
   id: { 
@@ -10,4 +10,4 @@ const countSchema = new mongoose.Schema({
         },
 });
 
-export const countModel = mongoose.model("counter", countSchema);
+module.exports = mongoose.model("counter", countSchema);
