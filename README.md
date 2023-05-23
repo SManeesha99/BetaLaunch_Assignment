@@ -28,13 +28,13 @@ This project developed using MERN Technology
 clone this repo to your system
 
 ```
-git clone https://github.com/SManeesha99/Layoutindex_Assesment.git
+git clone https://github.com/SManeesha99/BetaLaunch_Assignment.git
 ```
 
 Then go to root folder
 
 ```
-cd Layoutindex_Assesment
+cd BetaLaunch_Assignment
 ```
 
 Then You need to go frontend and backend folders using two separate teminals as below
