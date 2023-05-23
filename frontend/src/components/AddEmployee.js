@@ -38,7 +38,7 @@ const AddEmployee = () => {
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Date of Birth</label>
-                <input type="date" class="form-control" id="date" name='date' required/>
+                <input type="date" class="form-control" id="dateOfBirth" name='dateOfBirth' required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Email</label>
@@ -65,7 +65,7 @@ const AddEmployee = () => {
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Joined Date</label>
-                <input type="date" class="form-control" id="date" name='date' required/>
+                <input type="date" class="form-control" id="joinDate" name='joinDate' required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Experience</label>
