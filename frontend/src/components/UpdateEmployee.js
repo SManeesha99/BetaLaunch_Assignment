@@ -1,8 +1,88 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { NavLink,Link,useParams,useNavigate } from 'react-router-dom'
+import axios from 'axios';
 import Select from "react-select";
+import Swal from 'sweetalert2';
+
+
 
 const UpdateEmployee = () => {
+
+    const [employee, setEmployee] = React.useState({});
+    const [type, setType] = React.useState("");
+    const [gender, setGender] = React.useState("");
+    const [experience, setExperience] = React.useState("");
+    const params = useParams();
+    const employeeID = params.id;
+    const history = useNavigate();
+
+    useEffect(() => {
+        const getOneEmp = async () => {
+          await axios
+            .get(`http://localhost:5000/employee/${employeeID}`)
+            .then((res) => {
+              setEmployee(res.data);
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+        };
+      
+        getOneEmp();
+      }, []);
+
+      const sendRequest = async() =>{
+
+        await axios.put(`http://localhost:5000/employee/update/${employeeID}` , {
+      
+
+        fullName:String(employee.fullName),
+        initial:String(employee.initial),
+        display:String(employee.display),
+        gender:String(employee.gender),
+        dateOfBirth:String(employee.dateOfBirth),
+        email:String(employee.email),
+        mobileNumber:String(employee.mobileNumber),
+        designation:String(employee.designation),
+        employeeType:String(employee.employeeType),
+        joinDate:String(employee.joinDate),
+        experience:String(employee.experience),
+        salary:String(employee.salary),
+        notes:String(employee.notes),
+
+
+            
+      
+        }).then(()=>{
+      
+            Swal.fire({
+                title: "Success!",
+                text: "Place Details Updated Successfully",
+                icon: 'success',
+                timer: 2000,
+                button: false,
+              });
+            
+        })      
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        sendRequest().then(()=>history(`/`));
+    };
+
+    const handleChange =(e)=>{
+
+        setEmployee((prevState)=>({
+            ...prevState,
+            [e.target.name]:e.target.value,
+            type:type,
+            gender:gender,
+            experience:experience,
+        }))
+      }
+
   return (
     <>
     <div style={{ display:'grid' }}>
@@ -17,40 +97,41 @@ const UpdateEmployee = () => {
         <form class="row g-3">
             <div class="col-12">
                 <label class="form-label" style={{ color:'#00318C' }}>Full Name*</label>
-                <input type="text" class="form-control" id="fullName" name='fullName' placeholder="Full Name" required/>
+                <input type="text" class="form-control" id="fullName" name='fullName' value={employee.fullName} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Name with initials*</label>
-                <input type="text" class="form-control" id="initial" name='initial' required/>
+                <input type="text" class="form-control" id="initial" name='initial' value={employee.initial} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Preferred / Display Name</label>
-                <input type="text" class="form-control" id="displayName" name='displayName' required/>
+                <input type="text" class="form-control" id="displa" name='display' value={employee.display} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Gender</label>
-                <Select
+                <Select defualtValue={employee.gender}
                   options={[
                     { value: "Male", label: "Male" },
                     { value: "Female", label: "Female" },
                   ]}
+                  onChange={(e) => setGender(e.label)}
                 />
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Date of Birth</label>
-                <input type="date" class="form-control" id="date" name='date' required/>
+                <input type="date" class="form-control" id="dateOfBirth" name='dateOfBirth' value={employee.dateOfBirth} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Email</label>
-                <input type="email" class="form-control" id="email" name='email'required/>
+                <input type="email" class="form-control" id="email" name='email' value={employee.email} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Mobile Number</label>
-                <input type="phone" class="form-control" id="mobileNumber" name='mobileNumber' required/>
+                <input type="phone" class="form-control" id="mobileNumber" name='mobileNumber' value={employee.mobileNumber} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Designation</label>
-                <input type="text" class="form-control" id="designation" name='designation' required/>
+                <input type="text" class="form-control" id="designation" name='designation' value={employee.designation} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Employee Type</label>
@@ -61,11 +142,12 @@ const UpdateEmployee = () => {
                     { value: "Contract Basis", label: "Contract Basis" },
                     { value: "Other", label: "Other" },
                   ]}
+                  onChange={(e) => setType(e.label)}
                 />
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Joined Date</label>
-                <input type="date" class="form-control" id="date" name='date' required/>
+                <input type="date" class="form-control" id="joinDate" name='joinDate' value={employee.joinDate} onChange={handleChange} required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Experience</label>
@@ -81,18 +163,19 @@ const UpdateEmployee = () => {
                     { value: "08 Years", label: "08 Years" },
                     { value: "09 Years", label: "09 Years" },
                   ]}
+                  onChange={(e) => setExperience(e.label)}
                 />
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Salary</label>
-                <input type="text" class="form-control" id="salary" name='salary' required/>
+                <input type="text" class="form-control" id="salary" name='salary' value={employee.salary} onChange={handleChange} required/>
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label" style={{ color:'#00318C' }}>Personal Notes</label>
-                <textarea type="text" class="form-control" id="notes" name='notes' />
+                <textarea type="text" class="form-control" id="notes" name='notes' value={employee.notes} onChange={handleChange} />
             </div>
             <div class="col-12">
-            <button type="submit" class="btn btn-primary" style={{ float:'right', marginTop:'10px', marginLeft:'5px' }}>Update People</button>
+            <button type="submit" class="btn btn-primary" style={{ float:'right', marginTop:'10px', marginLeft:'5px' }} onClick={handleSubmit}>Update People</button>
             <Link to='/'>
             <button type="submit" class="btn btn-outline-primary" style={{ float:'right', marginTop:'10px' }}>Cancel</button>
             </Link>
