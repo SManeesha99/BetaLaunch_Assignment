@@ -55,7 +55,7 @@ const employeeSchema = new Schema({
             type: String, 
             required: true 
         },
-    employeID: { 
+    empId: { 
             type: String 
         },
 });

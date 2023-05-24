@@ -20,6 +20,7 @@ const AddEmployee = () => {
   const [salary, setSalary] = React.useState('')
   const [notes, setNotes] = React.useState('')
   const [employeeID, setEmployeeID] = React.useState('')
+
   const [epmPlayload, setEpmPlayload] = React.useState({
     fullName: "",
     initial: "",
@@ -96,7 +97,7 @@ const AddEmployee = () => {
                 <input 
                   type="text" 
                   class="form-control" 
-                  id="fullName" 
+                  id='fullName' 
                   name='fullName'   
                   onChange={(e) => onChangeInput(e)}
                   required/>
@@ -106,7 +107,7 @@ const AddEmployee = () => {
                 <input 
                   type="text" 
                   class="form-control" 
-                  id="initial" 
+                  id='initial'
                   name='initial'  
                   onChange={(e) => onChangeInput(e)}
                   required/>
@@ -116,14 +117,14 @@ const AddEmployee = () => {
                 <input 
                 type="text" 
                 class="form-control" 
-                id="displayName" 
+                id="display" 
                 name='display' 
                 onChange={(e) => onChangeInput(e)}
                 required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label"  style={{ color:'#00318C' }}>Gender</label>
-                <Select name='gender'
+                <Select name='gender' id='gender'
                   options={[
                     { value: "Male", label: "Male" },
                     { value: "Female", label: "Female" },
@@ -176,7 +177,7 @@ const AddEmployee = () => {
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Employee Type</label>
                 <Select
-                  name="type"
+                  name="type" id='type'
                   options={[
                     { value: "Full Time", label: "Full Time" },
                     { value: "Part Time", label: "Part Time" },

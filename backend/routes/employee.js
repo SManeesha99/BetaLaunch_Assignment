@@ -8,7 +8,7 @@ const employeeModel = require('../models/employee');
 router.post('/add', async (req, res) => {
     try {
       const counter = await countModel.findOneAndUpdate(
-        { id: "employeeID" },
+        { id: "empId" },
         { $inc: { seq: 1 } },
         { new: true, upsert: true }
       );
@@ -27,7 +27,7 @@ router.post('/add', async (req, res) => {
         experience: req.body.experience,
         salary: req.body.salary,
         notes: req.body.notes,
-        employeeID: counter.seq,
+        empId: counter.seq,
       });
   
       const result = await employee.save();

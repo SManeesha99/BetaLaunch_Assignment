@@ -31,23 +31,7 @@ const ViewEmployee = () => {
       
         getAllEmployee();
       }, [page, limit, selectEmpType]);
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       try {
-    //         const response = await axios.get('http://localhost:5000/employee/getEmployee', {
-    //           params: {
-    //             selectEmpType,
-    //             page,
-    //           },
-    //         });
-    //         setEmployee(response.data.emp);
-    //       } catch (error) {
-    //         console.error('Error:', error);
-    //       }
-    //     };
-    
-    //     fetchData();
-    //   }, [selectEmpType, page]);
+   
         
     const type = [
         { value: "Full Time", label: "Full Time" },
@@ -177,7 +161,7 @@ const ViewEmployee = () => {
                     return(
                         <tr key={index}>
                         <td>{emp.display}</td>
-                        <td>{emp.employeeID}</td>
+                        <td>{emp.empId}</td>
                         <td>{emp.designation}</td>
                         <td>{emp.type}</td>
                         <td>{emp.experience}</td>
