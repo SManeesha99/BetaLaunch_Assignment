@@ -45,7 +45,7 @@ const UpdateEmployee = () => {
         email:String(employee.email),
         mobileNumber:String(employee.mobileNumber),
         designation:String(employee.designation),
-        employeeType:String(employee.employeeType),
+        type:String(employee.type),
         joinDate:String(employee.joinDate),
         experience:String(employee.experience),
         salary:String(employee.salary),
@@ -77,9 +77,9 @@ const UpdateEmployee = () => {
         setEmployee((prevState)=>({
             ...prevState,
             [e.target.name]:e.target.value,
-            type:type,
-            gender:gender,
-            experience:experience,
+            // type:type,
+            // gender:gender,
+            // experience:experience,
         }))
       }
 
@@ -109,13 +109,18 @@ const UpdateEmployee = () => {
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Gender</label>
-                <Select defualtValue={employee.gender}
+                <select class="form-select"  name='gender' id='gender' onChange={handleChange} >
+                      <option selected disabled>{employee.gender}</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+                {/* <Select 
                   options={[
                     { value: "Male", label: "Male" },
                     { value: "Female", label: "Female" },
                   ]}
                   onChange={(e) => setGender(e.label)}
-                />
+                /> */}
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Date of Birth</label>
@@ -135,7 +140,14 @@ const UpdateEmployee = () => {
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Employee Type</label>
-                <Select
+                <select class="form-select"  name='type' id='type' onChange={handleChange} >
+                      <option selected disabled>{employee.type}</option>
+                      <option value="Full Time">Full Time</option>
+                      <option value="Part Time">Part Time</option>
+                      <option value="Contract Basis">Contract Basis</option>
+                      <option value="Other">Other</option>
+                  </select>
+                {/* <Select
                   options={[
                     { value: "Full Time", label: "Full Time" },
                     { value: "Part Time", label: "Part Time" },
@@ -143,7 +155,7 @@ const UpdateEmployee = () => {
                     { value: "Other", label: "Other" },
                   ]}
                   onChange={(e) => setType(e.label)}
-                />
+                /> */}
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Joined Date</label>
@@ -151,20 +163,20 @@ const UpdateEmployee = () => {
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Experience</label>
-                <Select
-                   options={[
-                    { value: "01 Years", label: "01 Years" },
-                    { value: "02 Years", label: "02 Years" },
-                    { value: "03 Years", label: "03 Years" },
-                    { value: "04 Years", label: "04 Years" },
-                    { value: "05 Years", label: "05 Years" },
-                    { value: "06 Years", label: "06 Years" },
-                    { value: "07 Years", label: "07 Years" },
-                    { value: "08 Years", label: "08 Years" },
-                    { value: "09 Years", label: "09 Years" },
-                  ]}
-                  onChange={(e) => setExperience(e.label)}
-                />
+                
+                <select class="form-select"  name='experience' id='experience' onChange={handleChange} >
+                      <option selected disabled>{employee.experience}</option>
+                      <option value="1 Years">1 Years</option>
+                      <option value="2 Years">2 Years</option>
+                      <option value="3 Years">3 Years</option>
+                      <option value="4 Years">4 Years</option>
+                      <option value="5 Years">5 Years</option>
+                      <option value="6 Years">6 Years</option>
+                      <option value="7 Years">7 Years</option>
+                      <option value="8 Years">8 Years</option>
+                      <option value="9 Years">9 Years</option>
+                </select>    
+
             </div>
             <div class="col-md-6">
                 <label class="form-label" style={{ color:'#00318C' }}>Salary</label>

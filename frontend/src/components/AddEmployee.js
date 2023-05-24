@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Select from "react-select";
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import {APIURL} from './API/enviroment'
 
 const AddEmployee = () => {
 
@@ -55,7 +56,7 @@ const AddEmployee = () => {
     e.preventDefault();
     try{
       console.log(epmPlayload)
-            const res = await axios.post("http://localhost:5000/employee/add",epmPlayload);
+            const res = await axios.post(`${APIURL}/employee/add`,epmPlayload);
             console.log(res);
             Swal.fire({
                 title: "Success!",
